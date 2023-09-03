@@ -1,8 +1,12 @@
 const API_URL = "https://api.themoviedb.org/3"
 
 const fetchMovieApi = async (pathnane, guery) => {
-    const res = await fetch(`${API_URL}${pathnane}?api_key=${process.env.api_secret_key}${guery?guery:""}`)
-    return await res.json()
+    try {
+        const res = await fetch(`${API_URL}${pathnane}?api_key=${process.env.api_secret_key}${guery?guery:""}`)
+        return await res.json() 
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 const getCategories = async () => {
